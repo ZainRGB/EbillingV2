@@ -1,0 +1,74 @@
+﻿@model EbillingV2.Models.PatientBillingViewModel
+@{
+    ViewData["Title"] = "EBilling";
+}
+
+<!-- Views/Billing/Index.cshtml -->
+<div class="container">
+    <img src="/images/logotrans.png" class="logo" />
+
+    @switch (Model.HospitalId)
+    {
+        case 1:
+            <h3>Melomed Gatesville</h3>
+            break;
+        case 2:
+            <h3>Melomed Mitchells Plain</h3>
+            break;
+        case 3:
+            <h3>Melomed Bellville</h3>
+            break;
+        case 6:
+            <h3>Melomed Tokai</h3>
+            break;
+        case 7:
+            <h3>Melomed Richards Bay</h3>
+            break;
+        default:
+            <h3>Please Select a Hospital.</h3>
+            break;
+    }
+
+    <h4>Patient Billing <span style="color:var(--green_clr);">@Model.Location @Model.SubLocation</span></h4>
+
+
+
+    <div class="form_container">
+        <form asp-action="SearchResults" method="GET">
+            <input type="hidden" asp-for="HospitalId" />
+            <input type="hidden" asp-for="LocationId" />
+            <input type="hidden" asp-for="SubLocationId" />
+            <input type="hidden" asp-for="Location" />
+            <input type="hidden" asp-for="SubLocation" />
+
+
+            <label for="RefNr">Enter or Scan Patient Reference Number ( Alternatively, click on a letter to specify the patient's surname.)</label><br />
+            <input id="RefNr" asp-for="PatRefNo" placeholder="Reference Number" class="input_txt" autofocus />
+            <button type="submit" class="form_btn">Submit</button>
+        </form>
+  
+       
+
+
+
+
+    </div>
+
+    <br />
+    <section class="letter_grid">
+        @for (int i = 65; i <= 90; i++)
+        {
+            char letter = (char)i;
+            <a href="@Url.Action("SearchResults", "Billing", new {
+            letter = letter.ToString(),
+            HospitalId = Model.HospitalId,
+            LocationId = Model.LocationId,
+            SubLocationId = Model.SubLocationId,
+            Location = Model.Location,
+            SubLocation = Model.SubLocation
+            })" class="letter_anchors">
+                <div class="letter_grid_item">@letter</div>
+            </a>
+        }
+    </section>
+</div>

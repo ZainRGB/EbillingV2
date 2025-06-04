@@ -1,0 +1,96 @@
+﻿@model EbillingV2.Models.SearchResultsViewModel
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+
+<h2 style="display:inline;margin-right:50px;">
+    Search Results (@Model.SearchParameters.Letter)
+</h2>
+
+
+<form method="get"
+      action="/billing/@Model.SearchParameters.HospitalId/@Model.SearchParameters.LocationId/@Model.SearchParameters.SubLocationId/@Uri.EscapeDataString(Model.SearchParameters.Location)/@Uri.EscapeDataString(Model.SearchParameters.SubLocation)"
+      style="display:inline;float:right;">
+    <button type="submit" class="form_btn">
+        <i class="bi bi-box-arrow-in-left"></i> Back
+    </button>
+</form>
+
+
+
+<!-- Your view content here -->
+@switch (@Model.SearchParameters.HospitalId)
+{
+    case 1:
+        <h3>Melomed Gatesville <span style="color:var(--green_clr);">@Model.SearchParameters.Location / @Model.SearchParameters.SubLocation</span></h3>
+        break;
+    case 2:
+        <h3>Melomed Mitchells Plain <span style="color:var(--green_clr);">@Model.SearchParameters.Location / @Model.SearchParameters.SubLocation</span></h3>
+        break;
+    case 3:
+        <h3>Melomed Bellville <span style="color:var(--green_clr);">@Model.SearchParameters.Location / @Model.SearchParameters.SubLocation</span></h3>
+        break;
+    case 6:
+        <h3>Melomed Tokai <span style="color:var(--green_clr);">@Model.SearchParameters.Location / @Model.SearchParameters.SubLocation</span></h3>
+        break;
+    case 7:
+        <h3>Melomed Richards Bay <span style="color:var(--green_clr);">@Model.SearchParameters.Location / @Model.SearchParameters.SubLocation</span></h3>
+        break;
+    default:
+        <h3>Please Select a Hospital. <span style="color:var(--green_clr);">@Model.SearchParameters.Location / @Model.SearchParameters.SubLocation</span></h3>
+        break;
+}
+
+<button onclick="history.back()" class="back_btn" title="Go Back"><i class="bi bi-box-arrow-in-left back_icon"></i></button>
+
+<br />
+<section class="pt_grid">
+
+    @if (Model.Results.Count == 0){
+    <h3 style="color:orangered;">There's nobody here!!!.</h3>
+    }
+
+
+    @foreach (var item in Model.Results)
+    {
+        @using (Html.BeginForm("Capture", "Billing", FormMethod.Get, new { @class = "pt_grid_form" }))
+{
+    @Html.Hidden("letter", Model.SearchParameters.Letter)
+    @Html.Hidden("HospitalId", Model.SearchParameters.HospitalId)
+    @Html.Hidden("LocationId", Model.SearchParameters.LocationId)
+    @Html.Hidden("SubLocationId", Model.SearchParameters.SubLocationId)
+    @Html.Hidden("Location", Model.SearchParameters.Location)
+    @Html.Hidden("SubLocation", Model.SearchParameters.SubLocation)
+    @Html.Hidden("PatFirstname", item.PatFirstname)
+    @Html.Hidden("PatSurname", item.PatSurname)
+    @Html.Hidden("AttDoc", item.AttDoc)
+    @Html.Hidden("MedAidName", item.MedAidName)
+    @Html.Hidden("Patrefno", item.PatRefNo)
+            @Html.Hidden("Scan", "Yes")
+
+    <button type="submit"  style="all: unset; cursor: pointer; width: 100%;">
+                <div class="pt_grid_item">
+        <p class="pt_grid_ref">@item.PatRefNo</p>
+        <p class="pt_grid_icon">
+            @if (item.Sex == "M"){
+              <i class="bi bi-gender-male" style="color:cornflowerblue;"></i>
+            }
+            else
+            {
+              <i class="bi bi-gender-female" style="color:hotpink;"></i>
+            }
+        </p>
+        <p class="pt_grid_bottom">@item.MedAidName</p>
+        <p>@item.PatFirstname @item.PatSurname</p>
+                </div>
+    </button>
+}
+
+    }
+</section>
+
+
+ 
+
+<!-- etc -->

@@ -1,0 +1,222 @@
+﻿@model List<EbillingV2.Models.StockLocationViewModel>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+@{
+    var selectedHospitalId = Context.Request.Query["hospitalid"];
+}
+
+
+@if (string.IsNullOrEmpty(selectedHospitalId))
+{
+    <h4 style="color:rgb(254,80,0);">Melomed Ebilling Links</h4>
+    <h3>Please Select a Hospital</h3>
+    <section class="hos_grid">
+        <a href="?hospitalid=1">
+            <div class="hos_grid_item @(selectedHospitalId == "1" ? "selected" : "")">Melomed Gatesville</div>
+        </a>
+        <a href="?hospitalid=2">
+            <div class="hos_grid_item @(selectedHospitalId == "2" ? "selected" : "")">Melomed Mitchells Plain</div>
+        </a>
+        <a href="?hospitalid=3">
+            <div class="hos_grid_item @(selectedHospitalId == "3" ? "selected" : "")">Melomed Bellville</div>
+        </a>
+        <a href="?hospitalid=6">
+            <div class="hos_grid_item @(selectedHospitalId == "6" ? "selected" : "")">Melomed Tokai</div>
+        </a>
+        <a href="?hospitalid=7">
+            <div class="hos_grid_item @(selectedHospitalId == "7" ? "selected" : "")">Melomed Richards Bay</div>
+        </a>
+    </section>
+    <br />
+    <br />
+    <p>
+        Hi Guys<br />
+        <b>Please carefully follow these instructions:</b> <br />
+
+        <b>Select Your Hospital:</b> Begin by choosing the hospital from the designated list.<br />
+        <b>Select the Stock Location:</b> Click on the provided "Stock Location" link.<br /><br />
+
+        <b>If you are uncertain about the correct stock location:</b><br />
+
+        <b>Consult with the Stock Controller:</b> Reach out to the stock controller for guidance.<br />
+        <b>Inquire with the Unit Manager:</b> Alternatively, seek assistance from your unit manager.<br />
+        <b>Utilize Clinic Manage:</b> Both the stock controller and unit manager can also verify the correct stock location within the Clinic Manage system.<br />
+        <b>Accurate stock location selection is crucial for the proper functioning of the eBilling program.</b><br />
+        <br />
+        <span style="color:orangered"> Please ensure that you select the correct location to avoid any issues or delays in the billing process.</span><br />
+
+
+
+    </p>
+
+    <p>
+        <b>Bookmarking and Creating Desktop Shortcuts for the Stock Location Page</b>
+
+        <br />
+
+        This guide will help you easily bookmark the stock location page and create desktop shortcuts for quick access.
+
+        <br /><br />
+
+        <b>1. Bookmarking the Stock Location Page</b>
+
+        <br>
+
+        <b>Navigate to the Page:</b> Open your preferred web browser and navigate to the stock location page.<br />
+        <b>Click the Bookmark Icon:</b> Locate the star-shaped bookmark icon in your browser's address bar (usually to the left or right of the URL).<br />
+        <b>Name and Save:</b><br />
+        Enter a descriptive name for the bookmark (e.g., "Stock Location").<br />
+        Choose a folder to save the bookmark in (e.g., "Bookmarks Bar" for easy access).<br />
+        Click "Save" or "Done" to confirm.
+        <br />
+        <br />
+        <b>Browser-Specific Instructions:</b><br />
+
+        <b>Chrome:</b> Click the star icon, name the bookmark, choose a folder, and click "Done."<br />
+        <b> Firefox:</b> Click the star icon, name the bookmark, choose a folder, and click "Save."<br />
+        <b> Safari:</b> Go to "File" > "Add to Bookmarks", name the bookmark, choose a folder, and click "Add."<br />
+        <b> Microsoft Edge:</b> Click the star icon, name the bookmark, choose a folder, and click "Save."<br />
+        <br /><br />
+
+        <b> 2. Creating a Desktop Shortcut</b>
+
+        <br />
+
+        <b>Copy the URL:</b> Right-click on the URL in the address bar and select "Copy."<br />
+        <b>Create a Shortcut:</b><br />
+        Right-click on your desktop and select "New" > "Shortcut."<br />
+        Paste the copied URL into the "Type the location of the item" field.<br />
+        Click "Next."<br />
+        Enter a name for the shortcut (e.g., "Stock Location Shortcut").<br />
+        Click "Finish."
+        <br /><br />
+
+        <b> Browser-Specific Tips:</b><br />
+
+        <b>Chrome, Edge, Firefox:</b><br />
+        Some browsers allow you to drag and drop the lock icon (next to the URL) directly onto your desktop to create a shortcut.<br />
+        <b>Safari:</b><br />
+        Safari might require additional steps or extensions to create desktop shortcuts directly from the browser.
+
+
+        <br /><br />
+        Thanks <br />
+        Dev
+
+    </p>
+}
+
+else{
+
+@if (selectedHospitalId == "1")
+{
+    <h4 style="color:rgb(254,80,0);">Melomed Ebilling Links</h4>
+    <h3>Melomed Gatesville</h3>
+}
+else if (selectedHospitalId == "2")
+{
+    <h4 style="color:rgb(254,80,0);">Melomed Ebilling Links</h4>
+    <h3>Melomed Mitchells Plain</h3>
+}
+else if (selectedHospitalId == "3")
+{
+    <h4 style="color:rgb(254,80,0);">Melomed Ebilling Links</h4>
+    <h3>Melomed Bellville</h3>
+}
+else if (selectedHospitalId == "6")
+{
+    <h4 style="color:rgb(254,80,0);">Melomed Ebilling Links</h4>
+    <h3>Melomed Tokai</h3>
+}
+else if (selectedHospitalId == "7")
+{
+    <h4 style="color:rgb(254,80,0);">Melomed Ebilling Links</h4>
+    <h3>Melomed Richards Bay</h3>
+}
+else
+{
+    <h4 style="color:rgb(254,80,0);">Melomed Ebilling Links</h4>
+    <h3>Please Select a Hospital</h3>
+} 
+
+
+
+
+
+<section class="hos_grid">
+    <a href="?hospitalid=1">
+        <div class="hos_grid_item @(selectedHospitalId == "1" ? "selected" : "")">Melomed Gatesville</div>
+    </a>
+    <a href="?hospitalid=2">
+        <div class="hos_grid_item @(selectedHospitalId == "2" ? "selected" : "")">Melomed Mitchells Plain</div>
+    </a>
+    <a href="?hospitalid=3">
+        <div class="hos_grid_item @(selectedHospitalId == "3" ? "selected" : "")">Melomed Bellville</div>
+    </a>
+    <a href="?hospitalid=6">
+        <div class="hos_grid_item @(selectedHospitalId == "6" ? "selected" : "")">Melomed Tokai</div>
+    </a>
+    <a href="?hospitalid=7">
+        <div class="hos_grid_item @(selectedHospitalId == "7" ? "selected" : "")">Melomed Richards Bay</div>
+    </a>
+</section>
+<br /><br />
+
+
+
+
+
+
+
+<table class="main_table">
+    <thead>
+        <tr><th style="border:none;" colspan="5"><h2>Location & Sub-Location List</h2></th></tr>
+        <tr>
+            <th>Location</th>
+            <th>Sub-Location</th>
+            <th>LOCATIONID</th>
+            <th>SUB-LOCATIONID</th>
+            <th>Links</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+          
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.LocationName</td>
+                        <td>@item.SubLocationName</td>
+                        <td>@item.StockLocationId</td>
+                        <td>@item.LocationId</td>
+                        <td><a href="/billing/@item.HospitalId/@item.StockLocationId/@item.LocationId/@item.LocationName/@item.SubLocationName" target="_blank">Ebilling Link</a></td>
+
+                        <td></td>
+                    </tr>
+                }
+           
+        }
+        else
+        {
+            <p>No data available.</p>
+        }
+    </tbody>
+</table>
+
+
+}
+
+
+
+
+
+
+
