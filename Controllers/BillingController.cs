@@ -199,7 +199,7 @@ namespace EbillingV2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SubmitBarcode(PatientBillingViewModel model)
+        public async Task<IActionResult> SubmitBarcode(PatientBillingViewModel model, string letter)
         {
             var connStr = _connectionFactory.GetConnectionString(model.HospitalId);
 
@@ -223,7 +223,9 @@ namespace EbillingV2.Controllers
                     patFirstName = model.PatFirstname,
                     patSurname = model.PatSurname,
                     attDoc = model.AttDoc,
-                    medaidName = model.MedAidName
+                    medaidName = model.MedAidName,
+                    letter = model.Letter
+
                 });
             }
 
@@ -282,7 +284,8 @@ namespace EbillingV2.Controllers
                 patFirstName = model.PatFirstname,
                 patSurname = model.PatSurname,
                 attDoc = model.AttDoc,
-                medaidName = model.MedAidName
+                medaidName = model.MedAidName,
+                letter = model.Letter
             });
         }
 

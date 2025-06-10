@@ -56,6 +56,7 @@
         <input type="hidden" asp-for="PatSurname" />
         <input type="hidden" asp-for="AttDoc" />
         <input type="hidden" asp-for="MedAidName" />
+        <input type="hidden" name="letter" value="@Context.Request.Query["letter"]" />
 
         <label for="Barcode">Scan or Enter Barcode </label><br />
         <input asp-for="Barcode" placeholder="Enter or Scan Barcode" class="input_txt" autofocus />
